@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.d-flex {
+    display: flex;
+
+    img {
+        width: 350px;
+    }
+
+    p {
+        width: 800px;
+        text-align: justify;
+    }
+}
+
+.gap {
+    .d-flex {
+        gap: 10px;
+
+        h3 {
+            color: red;
+        }
+    }
+}
