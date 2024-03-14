@@ -3,6 +3,7 @@
 <main>
     <div class="container card-container">
         <div class="comics-container">
+            <a href="{{route('comics.create')}}">AGGIUNGI UN FUMETTO</a>
             @foreach ($comics as $comic )
             <a href='{{route('comics.show', $comic)}}'>
                 <img src="{{$comic->thumb}}" alt="">
