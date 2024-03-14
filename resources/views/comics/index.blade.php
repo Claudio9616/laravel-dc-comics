@@ -5,7 +5,7 @@
         <div class="comics-container">
             <a href="{{route('comics.create')}}">AGGIUNGI UN FUMETTO</a>
             @foreach ($comics as $comic )
-            <a href='{{route('comics.show', $comic)}}'>
+            <a href='{{route('comics.show', $comic->id)}}'>
                 <img src="{{$comic->thumb}}" alt="">
                 <h4>{{$comic->tile}}</h4>
             </a>
