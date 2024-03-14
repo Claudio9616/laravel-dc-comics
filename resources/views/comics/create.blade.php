@@ -3,6 +3,7 @@
 @section('main-content')
 <div class="container">
     <form action="{{route('comics.store')}}" method="POST">
+        @csrf
         <label for="title">Inserisci il nome del fumetto</label>
         <input type="text" name="tile" id="title" placeholder="NOME FUMETTO">
         <label for="thumb">Inserisci la copertina</label>

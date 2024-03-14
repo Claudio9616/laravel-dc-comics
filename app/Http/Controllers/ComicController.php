@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comic;
 
+
 class ComicController extends Controller
 {
     /**
@@ -29,11 +30,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tile' => 'require|string',
+            'thumb' => 'nullable|url:http,https',
+            'price' => 'require|numeric|min:5|max:200',
+            'series' => 'require|string',
+            'type' => 'require|string',
+            'sale_date' => 'require|string',
+            'description' => 'nullable|string'
+        ]);
         $data = $request->all();
         $comic = new Comic();
         $comic->fill($data);
         $comic->save();
-        return redirect()->route('comics.show', ['comic' => $comic->id]);
+        return to_route('comics.show', $comic->id);
     }
 
     /**
