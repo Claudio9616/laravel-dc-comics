@@ -68,6 +68,20 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         // ricorda che la request serve per prendere i campi nel db
+
+        $request->validate([
+            'tile' => 'required|string',
+            'thumb' => 'nullable|url:http,https',
+            'price' => 'required|numeric|min:5|max:200',
+            'series' => 'required|string',
+            'type' => 'required|string',
+            'sale_date' => 'required|string',
+            'description' => 'nullable|string'
+        ]);
+        // praticamente se hai delle validazioni semplici come qui sopra va bene pure un copia e incolla, ma se hai una validazione un pò più 
+        // complessa tipo ('thumb' => 'unique:comics') QUESTA RIMANE COSI NELA FUNZIONE STORE, ma in questa funzione trasformi la validazione in 
+        // un array e scrivi Rule::unique('comics')->ignore($comic->id); PRATICAMENTE GLI STAI DICENDO CHE IN QUESTA FUNZIONE, PER QUESTO ID DEVE IGNORARE 
+        // IL FATTO DI ESSERE UNIQUE, per tutto il resto va bene un copi e incolla
         $data = $request->all();
         // a differenza dello store, che dovevamo creare un nuovo fumetto, qui non dobbiamo creare ma modificare uno già esistente
         $comic->fill($data);
