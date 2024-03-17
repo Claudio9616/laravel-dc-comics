@@ -31,12 +31,12 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tile' => 'require|string',
+            'tile' => 'required|string',
             'thumb' => 'nullable|url:http,https',
-            'price' => 'require|numeric|min:5|max:200',
-            'series' => 'require|string',
-            'type' => 'require|string',
-            'sale_date' => 'require|string',
+            'price' => 'required|numeric|min:5|max:200',
+            'series' => 'required|string',
+            'type' => 'required|string',
+            'sale_date' => 'required|string',
             'description' => 'nullable|string'
         ]);
         $data = $request->all();
@@ -57,17 +57,22 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        // ricorda che la request serve per prendere i campi nel db
+        $data = $request->all();
+        // a differenza dello store, che dovevamo creare un nuovo fumetto, qui non dobbiamo creare ma modificare uno già esistente
+        $comic->fill($data);
+        $comic->save();
+        return to_route('comics.show', $comic->id);
     }
 
     /**

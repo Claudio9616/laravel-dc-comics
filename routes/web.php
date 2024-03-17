@@ -31,3 +31,8 @@ Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.sh
 
 Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
 // ricorda che a differenza di verbo questa rotta POST comics, non si scontrearà mai con GET comics
+
+Route::get('/comics/{comic}/edit', [ComicController::class, 'edit'])->name('comics.edit');
+// Questa rotta non si scontra con quella della show perchè dopo il {QUALCOSA}, per differenziarsi si aggiunge il nome della funzione
+
+Route::put('/comics/{comic}', [ComicController::class, 'update'])->name('comics.update');

@@ -17,4 +17,6 @@
         </div>
     </div>
 </div>
+<a href="{{route('comics.edit', $comic->id)}}">MODIFICA</a>
+{{-- qui gli passiamo l'id del fumetto cosi la view edit sa di quale fumetto noi vogliomo apportare le modifiche --}}
 @endsection
