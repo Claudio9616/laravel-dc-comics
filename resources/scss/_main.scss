@@ -5,6 +5,10 @@ main {
     align-items: center;
     color: white;
 
+    strong {
+        color: white;
+    }
+
     .card-container {
         margin: 10px 0;
         display: flex;

@@ -92,8 +92,12 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        // Anche qui abbaimo il singolo id che dobbiamo cancellare
+        $comic->delete(); 
+        return to_route('comics.index')->with('message', "$comic->tile eliminato con successo");
+        // Qui per migliorare l'esperienza utente posso agganciare al return la funzione with che si aspetta 2 valori e che si aggancia all'if
+        // nella comics.index. OVVIAMENTE questa funzionr WITH la posso usare in tutti redirect che voglio
     }
 }

@@ -18,5 +18,16 @@
     </div>
 </div>
 <a href="{{route('comics.edit', $comic->id)}}">MODIFICA</a>
-{{-- qui gli passiamo l'id del fumetto cosi la view edit sa di quale fumetto noi vogliomo apportare le modifiche --}}
+{{-- qui gli passiamo l'id del fumetto cosi la view edit sa di quale fumetto noi vogliamo apportare le modifiche --}}
+{{-- 
+RICORDA CHE IL TAG A fa solo richieste IN GET, MAI IN POST QUINDI PER UN DESTROY E UN UPDATE (VEDI FILE EDIT) SERVE IL TAG FORM CON LA 
+FUNZIONE @METHOD PER IMPOSTARE IL VERBO --}}
+
+<form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+{{-- anche qui come in edit dobbiamo passare l'id dell'tem che vogliomo cancellare e lo recuperiamo dalla route che lo passa alla funzione 
+nel controller --}}
+@csrf
+@method('DELETE')
+<button type="submit">ELIMINA</button>
+</form>
 @endsection

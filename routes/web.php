@@ -36,3 +36,7 @@ Route::get('/comics/{comic}/edit', [ComicController::class, 'edit'])->name('comi
 // Questa rotta non si scontra con quella della show perchè dopo il {QUALCOSA}, per differenziarsi si aggiunge il nome della funzione
 
 Route::put('/comics/{comic}', [ComicController::class, 'update'])->name('comics.update');
+ 
+Route::delete('/comics/{comic}', [ComicController::class, 'destroy'])->name('comics.destroy');
+// Questa è la rotta per la cancellazione dell'items, ovviamente dovrà avere un {QUALCOSA} perchè la funzione deve sapere quale item deve cancellare
+// tramite l'id
